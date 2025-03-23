@@ -1,20 +1,27 @@
-import { Box, Button, Card, Divider, FormControl, FormLabel, Slider, Switch, Typography } from '@mui/joy';
-import React, { useState } from 'react';
-import { Default, Mobile } from '../utils/Responsive';
-import { MazeViewSettings } from './MazeView';
+import {
+  Box,
+  Button,
+  Card,
+  Divider,
+  FormControl,
+  FormLabel,
+  Slider,
+  Switch,
+  Typography,
+} from "@mui/joy";
+import React, { useState } from "react";
+import { Default, Mobile } from "../utils/Responsive";
+import { MazeViewSettings } from "./MazeView";
 
-
-function ControlPanel({ children }: {
-  children: React.ReactNode;
-}) {
+function ControlPanel({ children }: { children: React.ReactNode }) {
   const sx = {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
     left: 0,
     p: 2,
     m: 2,
-    gap: 2
-  }
+    gap: 2,
+  };
 
   return (
     <>
@@ -24,7 +31,8 @@ function ControlPanel({ children }: {
           sx={{
             ...sx,
             width: 300,
-          }}>
+          }}
+        >
           {children}
         </Card>
       </Default>
@@ -34,18 +42,19 @@ function ControlPanel({ children }: {
           sx={{
             ...sx,
             right: 0,
-          }}>
+          }}
+        >
           {children}
         </Card>
       </Mobile>
     </>
-  )
+  );
 }
 
 export default function MazeControls({
   settings,
   setSettings,
-  loading
+  loading,
 }: {
   settings: MazeViewSettings;
   setSettings: (settings: MazeViewSettings) => void;
@@ -56,28 +65,22 @@ export default function MazeControls({
 
   return (
     <ControlPanel>
-      <Typography level="h5" >
-        Maze properties
-      </Typography>
+      <Typography level="h5">Maze properties</Typography>
       <Box component="div" sx={{ width: "100%" }}>
-        <Typography gutterBottom>
-          Maze size
-        </Typography>
+        <Typography gutterBottom>Maze size</Typography>
         <Slider
           min={5}
           max={55}
           step={5}
-          marks={
-            [
-              { value: 5, label: '5' },
-              { value: 15, label: '15' },
-              { value: 30, label: '30' },
-              { value: 45, label: '45' },
-              { value: 55, label: '55' },
-            ]
-          }
+          marks={[
+            { value: 5, label: "5" },
+            { value: 15, label: "15" },
+            { value: 30, label: "30" },
+            { value: 45, label: "45" },
+            { value: 55, label: "55" },
+          ]}
           value={mazeSize}
-          onChange={(e, value) => setMazeSize(value as number)}
+          onChange={(e: any, value: any) => setMazeSize(value as number)}
           valueLabelDisplay="auto"
         />
       </Box>
@@ -92,9 +95,9 @@ export default function MazeControls({
           onChange={(event) => {
             setWireframe(event.target.checked);
           }}
-          color={wireframe ? 'success' : 'neutral'}
+          color={wireframe ? "success" : "neutral"}
           variant="outlined"
-          endDecorator={wireframe ? 'On' : 'Off'}
+          endDecorator={wireframe ? "On" : "Off"}
           slotProps={{
             endDecorator: {
               sx: {
@@ -113,8 +116,8 @@ export default function MazeControls({
           setSettings({
             ...settings,
             wireframe,
-            mazeSize
-          })
+            mazeSize,
+          });
         }}
       >
         Generate Maze
