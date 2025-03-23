@@ -92,7 +92,7 @@ export default function MazeControls({
         <FormLabel>Enable wireframe</FormLabel>
         <Switch
           checked={wireframe}
-          onChange={(event) => {
+          onChange={(event: any) => {
             setWireframe(event.target.checked);
           }}
           color={wireframe ? "success" : "neutral"}
